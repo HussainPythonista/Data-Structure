@@ -42,10 +42,20 @@ class linkedList(object):
                 ValToPrint+=str(pointer.data)+"->"
                 pointer=pointer.nextReference
             print(ValToPrint)
-
+    def countNumberOfNodes(self):
+        if self.head==None:
+            print("No Node to count")
+        else:
+            count=0
+            pointer=self.head
+            while pointer:
+                count+=1
+                pointer=pointer.nextReference
+            return count
 ll=linkedList()
 ll.addElement(20)
 ll.addElement(30)
 ll.addElement(40)
 ll.addElement(50)
 ll.printElements()
+print(ll.countNumberOfNodes())
