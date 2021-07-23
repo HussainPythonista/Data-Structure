@@ -52,10 +52,23 @@ class linkedList(object):
                 count+=1
                 pointer=pointer.nextReference
             return count
+    def countNumberOfElement(self,node):
+        if node==None:
+            return 0
+        else:
+            #self.head=self.head.nextReference
+            #self.count+=1
+            return 1+self.countNumberOfElement(node.nextReference)
+        
+        
+    
 ll=linkedList()
+
 ll.addElement(20)
+
 ll.addElement(30)
-ll.addElement(40)
-ll.addElement(50)
+ll.addElement(80)
+#print(ll.reachingLastElement())
 ll.printElements()
+print(ll.countNumberOfElement(ll.head))
 print(ll.countNumberOfNodes())
