@@ -16,6 +16,8 @@ class LinkedList(object):
         self.head=head
         self.count=0
         self.valToPrint=""
+        self.sumValue=0
+        self.maxValue=0
     def addElements(self,data):
         if self.head==None:
            self.head=Node(data)
@@ -71,13 +73,44 @@ class LinkedList(object):
         else:
             self.head=self.head.nextReference
             return 1+self.getCount2()
+
+    def sumAllElement(self):
+        if self.head.nextReference==None:
+            self.sumValue+= self.head.data
+            return self.sumValue
+        else:
+            self.sumValue+= self.head.data
+            self.head=self.head.nextReference
+            self.sumAllElement()
+        return self.sumValue
+
+    def maxVal(self):
+        
+        if self.head.nextReference!=None:
+            #print(self.head.data)
+            if self.maxValue<self.head.data:
+                self.maxValue=self.head.data
+                
+                self.head=self.head.nextReference
+                self.maxVal()
+            else:
+                self.head=self.head.nextReference
+                self.maxVal()
+        else:
+            
+            if (self.head.data>self.maxValue):
+                self.maxValue=self.head.data
+        return self.maxValue
 ll=LinkedList()
 ll.addElements(50)
 ll.addElements(90)
-ll.addElements(1090)
+#ll.addElements(1090)
 ll.addElements(90)
-ll.addElements(90)
+ll.addElements(190)
 #ll.addElements(90)
-
 #print(ll.getCount())
 #print(ll.getCount2())
+
+#print(ll.sumAllElement())
+
+print(ll.maxVal())

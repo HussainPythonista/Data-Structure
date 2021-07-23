@@ -39,27 +39,42 @@ class linkedList(object):
 
             ValToPrint=""
             while pointer:
+                #This one is for achive something i want through Traverse
                 ValToPrint+=str(pointer.data)+"->"
                 pointer=pointer.nextReference
             print(ValToPrint)
     def countNumberOfNodes(self):
+        #Checking the Node is Empty or Nit
         if self.head==None:
             print("No Node to count")
         else:
-            count=0
-            pointer=self.head
-            while pointer:
+
+            count=0#Initialize
+            pointer=self.head#Head Pointer
+            while pointer:#Traverse Element until reach the Next Reference as None
+                #Increase the Value
                 count+=1
+                #For Next Reference 
                 pointer=pointer.nextReference
             return count
-    def countNumberOfElement(self,node):
-        if node==None:
-            return 0
-        else:
-            #self.head=self.head.nextReference
-            #self.count+=1
-            return 1+self.countNumberOfElement(node.nextReference)
-        
+    
+    def maxValue(self):
+        maxVal=0
+        pointer=self.head
+        while pointer:
+            if maxVal<pointer.data:
+                maxVal=pointer.data
+                pointer=pointer.nextReference
+        return maxVal
+    
+    #Sum Of all Nodes
+    def sumOfValues(self):
+        sumVal=0
+        pointer=self.head
+        while pointer:
+            sumVal+=pointer.data
+            pointer=pointer.nextReference
+        return sumVal
         
     
 ll=linkedList()
@@ -70,5 +85,5 @@ ll.addElement(30)
 ll.addElement(80)
 #print(ll.reachingLastElement())
 ll.printElements()
-print(ll.countNumberOfElement(ll.head))
-print(ll.countNumberOfNodes())
+
+print(ll.maxValue())
