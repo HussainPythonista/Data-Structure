@@ -1,6 +1,3 @@
-
-
-
 class Node(object):
     def __init__(self,data,nextReference=None):
         #data that means value to store
@@ -101,16 +98,27 @@ class LinkedList(object):
             if (self.head.data>self.maxValue):
                 self.maxValue=self.head.data
         return self.maxValue
+      
+    def searchElement(self,find):
+        if self.head==None:
+            return "Nope"
+        elif self.head.data==find:
+            return ("Found",self.count)
+       
+        self.count+=1
+        self.head=self.head.nextReference
+        return self.searchElement(find)
+       # return
+    
+        
 ll=LinkedList()
 ll.addElements(50)
-ll.addElements(90)
-#ll.addElements(1090)
+
 ll.addElements(90)
 ll.addElements(190)
-#ll.addElements(90)
-#print(ll.getCount())
-#print(ll.getCount2())
-
-#print(ll.sumAllElement())
-
-print(ll.maxVal())
+ll.addElements(43)
+ll.addElements(322)
+ll.addElements(9)
+ll.addElements(19)
+ll.revesrseLinkedList()
+print(ll.printElementsRecursion())
