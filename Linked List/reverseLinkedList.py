@@ -32,7 +32,35 @@ class reverse(object):
             #pointer.nextReference=prev
             
         ll.head=prev
-    
+
+    def reverseLinkedListWithArray(self):
+        array=[]
+        pointer=ll.head
+        iterator=-1
+        while pointer:
+            iterator+=1
+            array.append(pointer.data)
+            pointer=pointer.nextReference
+        prev=None
+        
+        ll.head=Node(array[iterator])
+        prev=ll.head
+        while iterator>0:
+            iterator-=1
+            prev.nextReference=Node(array[iterator])
+            prev=prev.nextReference
+           # prev.n
+            
+    def  recursiveMethod(self,prevPointer,pointer):
+       # print(ll.head.data)
+        if pointer.nextReference==None:
+            ll.head=pointer
+            pointer.nextReference=prevPointer
+            return
+        self.recursiveMethod(pointer,pointer.nextReference)
+        pointer.nextReference=prevPointer
+        #return
+        
 reverseVal=reverse()
 #ll=linkedList()
 
@@ -41,13 +69,14 @@ reverseVal.add(50)
 reverseVal.add(10)
 reverseVal.add(20)
 reverseVal.add(30)
-reverseVal.reverseElements()
-reverseVal.reverseAnotherMethod()
-head= ll.head
-
-
-ll.printElements(head)
+#reverseVal.reverseElements()
+#reverseVal.reverseAnotherMethod()
 prevPointer=None
 pointer=ll.head
 
-reverseVal.recursive(prevPointer,pointer)
+#reverseVal.recursive(prevPointer,pointer)
+#reverseVal.reverseLinkedListWithArray()
+prevPointer=None
+pointer=ll.head
+reverseVal.recursiveMethod(prevPointer,pointer)
+ll.printElements(ll.head)

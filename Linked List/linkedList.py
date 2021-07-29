@@ -53,13 +53,13 @@ class linkedList(object):
             self.last.nextReference=node
             self.last=node
     
-    def printElements(self):
-        if self.head==None:
+    def printElements(self,head):
+        if head==None:
             print("There is no element in Head ")
 
         else:
             #Traverse all the Element in linkedList For Printing
-            pointer=self.head
+            pointer=head
 
             ValToPrint=""
             while pointer:
@@ -124,15 +124,4 @@ ll.addElement(5)
 ll.addElement(5)
 ll.addElement(5)
 ll.addElement(6)
-ll.addElement(6)
-ll.addElement(7)
-ll.addElement(7)
-ll.addElement(7)
-ll.addElement(7)
-#ll.printElements(ll.head)
-#ll.reverse()
 
-pointer=ll.head
-prevPointer=None
-ll.findDuplicates()
-ll.printElements()
