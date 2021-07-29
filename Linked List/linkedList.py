@@ -120,8 +120,5 @@ class linkedList(object):
             pointer.nextReference=prev
             
 ll=linkedList()
-ll.addElement(5)
-ll.addElement(5)
-ll.addElement(5)
-ll.addElement(6)
+
 
