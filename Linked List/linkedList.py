@@ -52,6 +52,9 @@ class linkedList(object):
             node=Node(data)
             self.last.nextReference=node
             self.last=node
+    def insertElement(self,array):
+        for i in range(len(array)):
+            self.addElement2(array[i])
     
     def printElements(self,head):
         if head==None:
@@ -120,5 +123,3 @@ class linkedList(object):
             pointer.nextReference=prev
             
 ll=linkedList()
-
-
