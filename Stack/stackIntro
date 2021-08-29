@@ -1,0 +1,12 @@
+"""
+The Stack which works in LIFO(Last In First Out) Approach
+
+ADT(Abstract Data Type) Operations in STACK
+
+1.push(data)
+2.pop()
+3.TopValue()
+4.IsEmpty()
+5.IsFull()
+6.Peek
+"""
