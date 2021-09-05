@@ -1,12 +1,12 @@
 from stack import Stack
 
 
-preference={"+":1,"-":1,"*":2,"/":2}
+preference={"+":1,"-":1,"*":2,"/":2,"^":3}
 stack=Stack()
 
 def opertation(string):
     global preference,s
-    operand=["-","+","*","/"]
+    operand=["-","+","*","/","^"]
     postFix=""
     lastPlace=len(string)-1
     i=0
@@ -31,7 +31,7 @@ def opertation(string):
         for i in range(len(stack.bucket)):
             postFix+=(stack.pop())
     print(postFix)
-needToPerform="a+b*e"
+needToPerform="a+b*c-d^f"
 opertation(needToPerform)
 
 #print(s.bucket)
