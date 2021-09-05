@@ -1,6 +1,5 @@
 #This File Majorly i have focus on Create Stack class and working with that
 
-
 class Stack(object):
     #Stack has major ADT(Abstact Data Type)
     def __init__(self,stackSize=None):
@@ -19,43 +18,52 @@ class Stack(object):
     def push(self,value):
         #This function I use for to add values in bucket
         #this one is works in Last In First Out Mechanism
-        if self.top<self.stackSize-1:
+        if self.stackSize!=None:
+            if self.top<self.stackSize-1:
+                self.top+=1
+                self.bucket.append(value)
+            else:
+                print("StackOverFlow")
+                print("You need to pop some values to add new Values")
+        else:
             self.top+=1
             self.bucket.append(value)
-        else:
-            print("StackOverFlow")
-            print("You need to pop some values to add new Values")
 
     def pop(self):
         #We use Pop function, for take out value from top in the bucket
 
-        if self.top==0:
+        if self.top==-1:
 
-            print("StackUnderFlow")
-            print("There is No element for pop")
+            return ("StackUnderFlow")
+            #return ("There is No element for pop")
        
-        self.bucket.pop()
+        
         self.top-=1
+        return self.bucket.pop()
     def isEmpty(self):
         if self.top==-1:
-            print(True)
+            return (True)
         else:
-            print(False)
+            return (False)
     
     def isFull(self):
-        if self.top==self.stackSize-1:
-            print(True)
+        if self.stackSize!=None:
+            if self.top==self.stackSize-1:
+                print(True)
+            else:
+                print(False)
         else:
-            print(False)
+            return None
 
     def peek(self,index):
         #We use Peek for Accesing Element
         newIndex=self.top-index+1
         if  newIndex<self.stackSize and newIndex>=0:
 
-            print(self.bucket[newIndex],""+"is Found")
+            return (self.bucket[newIndex],""+"is Found")
         else:
-            print("You game me a Out of Index")
+            #("You game me a Out of Index")
+            return None
 stack=Stack(5)
 stack.push(10)
 stack.push(20)
