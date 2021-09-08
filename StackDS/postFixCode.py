@@ -19,7 +19,7 @@ preference={
 stack=Stack()
 
 operators=["*","/","+","-","^"]
-infix="a-b+(m^n)*(o+p)-q/r^s*t+z"
+#infix="a-b+(m^n)*(o+p)-q/r^s*t+z"
 def postFix(infix):
     global preference,stack,operators
     
@@ -29,43 +29,50 @@ def postFix(infix):
 
     while start<=lengthOfInfix:
         if infix[start]=="(":
-            for i in range(start-1,lengthOfInfix):
-                if infix[start]==")":
-                    for j in range(start-1,-1,-1):
-                        if infix[j] in operators:
-                            poped=stack.pop()
-                            postFix+=poped
-                        break
+            for i in range(start,lengthOfInfix):
+                if infix[i] in operators:
+                    #if infix[i]=="(" or infix[i]==")":
+                    stack.push(infix[i])
                 else:
-                    if infix[i] in operators:
-                        stack.push(infix[i])
+                    if infix[i]=="(" or infix[i]==")":
+                        #print(infix[i])
+                        pass
                     else:
                         postFix+=infix[i]
-                start=i
+                if infix[i]==")":
+                    #stack.pop()
+                    break
+            
+            start=i
 
+            
         else:
             
             if infix[start] in operators:
-                if stack.isEmpty()==True:
-                    #print(preference[infix[start]])
-                    stack.push(infix[start])
-                    start+=1
-                elif preference[stack.topElement()]>preference[infix[start]]:
-                    #if infix[start]!="(" and infix[start]!=")":
-                        #print(True)
-                    stack.push(infix[start])
-                    start+=1
-                else:
-                    if infix[start]!="^":
-                        
-                        oper=stack.pop()
-                        #print(oper)
-                        #if  infix[start]!="(" and infix[start]!=")":
-                        postFix+=oper
-                    else:
+                    if stack.isEmpty()==True:
+                        #print(preference[infix[start]])
+                        stack.push(infix[start])
                         start+=1
+                    elif preference[stack.topElement()]>preference[infix[start]]:
+                        if infix[start]!="(" and infix[start]!=")":
+                            #print(True)
+                            stack.push(infix[start])
+                        start+=1
+                    else:
+                        if infix[start]!="^":
+                            if infix[start]!="(" or infix[start]!=")":
+
+                                oper=stack.pop()
+                                #print(oper)
+                            #print(oper)
+                            #if  infix[start]!="(" and infix[start]!=")":
+                                postFix+=oper
+                        else:
+                            start+=1
             else:
-                postFix+=infix[start]
+                if infix[start]!=")":
+                    
+                    postFix+=infix[start]
                 start+=1
     while stack.isEmpty()==False:
         oper=stack.pop()
