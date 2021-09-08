@@ -43,4 +43,6 @@ def is_balanced(s):
                     return False
 
     return stack.size()==0
-print(is_balanced("[a+b]*(x+2y)*{gg+kk}"))
+string="()]"
+#"[a+b]*(x+2y)*{gg+kk}"
+print(is_balanced(string))

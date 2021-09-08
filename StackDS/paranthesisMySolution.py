@@ -6,7 +6,7 @@ class Stack(object):
         #print(appendVal)
         self.bucket.append(appendVal)
     def pop(self):
-        if self.isEmpty():
+        if self.isEmpty()==True:
             return False
         return self.bucket.pop()
        
@@ -14,18 +14,34 @@ class Stack(object):
         if len(self.bucket)==0:
             return True
         return False
+def match(character1,character2):
+    matching={
+        "}":"{",
+        "]":"[",
+        ")":"("
+
+    }
+    return matching[character1]==character2
 
 def matchingParanthesis(string):
     stack=Stack()
     for i in range(len(string)):
         if string[i]=="(" or string[i]=="{" or string[i]=="[":
             stack.push(string[i])
-        elif string[i]==")" or string[i]=="}" or string[i]=="]":
-            if stack.pop()==False:
-               return False
+        if string[i]==")" or string[i]=="}" or string[i]=="]":
+            poped=stack.pop()
+            if match(string[i],poped)==False:
+                return False
     if stack.isEmpty():
         return True
     else:
         return False
-string="[a+b]*(x+2y)*{gg+kk}"
+#string="[a+b]*(x+2y)*{gg+kk}"
+#string="([)]"
+#string="{[]}"
+string="()[]{}"
+string="(]"
+string="([)]"
+string="{[]}"
+string="]"
 print(matchingParanthesis(string))

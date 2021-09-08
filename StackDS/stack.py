@@ -57,20 +57,24 @@ class Stack(object):
 
     def peek(self,index):
         #We use Peek for Accesing Element
-        newIndex=self.top-index+1
+        newIndex=self.top-index
         if  newIndex<self.stackSize and newIndex>=0:
 
             return (self.bucket[newIndex],""+"is Found")
         else:
             #("You game me a Out of Index")
             return None
+    
+    def topElement(self):
+        #tHis method returns the top most element in stack
+        if self.top==-1:
+            return None
+        else:
+            return self.bucket[-1]
+
 stack=Stack(5)
-stack.push(10)
-stack.push(20)
-stack.push(15)
-stack.push(20)
-stack.push(15)
-#stack.peek(2)
-stack.peek(8)
-
-
+#stack.push(10)
+#stack.push(12)
+#stack.push(15)
+#stack.push(20)
+#stack.push(7)

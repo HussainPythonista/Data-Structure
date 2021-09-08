@@ -1,37 +1,74 @@
-from stack import Stack
+from stack import *
 
 
-preference={"+":1,"-":1,"*":2,"/":2,"^":3}
+infix="k+l-m*n+(o^p)*w/v/u*t+q"
+
+#PostFixAnswer =abc*+de/+
+
+preference={
+    "*":2,
+    "/":2,
+    "+":3,
+    "-":3,
+    "^":1,
+    "(":0,
+    ")":0
+
+}
+#The peference is we use for to append and delete the value in stack which one have high priority
 stack=Stack()
 
-def opertation(string):
-    global preference,s
-    operand=["-","+","*","/","^"]
+operators=["*","/","+","-","^"]
+infix="a-b+(m^n)*(o+p)-q/r^s*t+z"
+def postFix(infix):
+    global preference,stack,operators
+    
     postFix=""
-    lastPlace=len(string)-1
-    i=0
-    while i<=lastPlace:
-        if string[i] not in operand:
-            
-            postFix+=string[i]
-            #print(postFix[i])
-            i+=1
-        else:
-            if stack.isEmpty()==True:
-                stack.push(string[i])
-                i+=1
-            elif preference[stack.bucket[stack.top]]==preference[string[i]]:
-                strVal=stack.pop()
-                postFix+=strVal
-            else:
-                stack.push(string[i])
-                i+=1
-                
-    if stack.isEmpty()==False:
-        for i in range(len(stack.bucket)):
-            postFix+=(stack.pop())
-    print(postFix)
-needToPerform="a+b*c-d^f"
-opertation(needToPerform)
+    start=0
+    lengthOfInfix=len(infix)-1
 
-#print(s.bucket)
+    while start<=lengthOfInfix:
+        if infix[start]=="(":
+            for i in range(start-1,lengthOfInfix):
+                if infix[start]==")":
+                    for j in range(start-1,-1,-1):
+                        if infix[j] in operators:
+                            poped=stack.pop()
+                            postFix+=poped
+                        break
+                else:
+                    if infix[i] in operators:
+                        stack.push(infix[i])
+                    else:
+                        postFix+=infix[i]
+                start=i
+
+        else:
+            
+            if infix[start] in operators:
+                if stack.isEmpty()==True:
+                    #print(preference[infix[start]])
+                    stack.push(infix[start])
+                    start+=1
+                elif preference[stack.topElement()]>preference[infix[start]]:
+                    #if infix[start]!="(" and infix[start]!=")":
+                        #print(True)
+                    stack.push(infix[start])
+                    start+=1
+                else:
+                    if infix[start]!="^":
+                        
+                        oper=stack.pop()
+                        #print(oper)
+                        #if  infix[start]!="(" and infix[start]!=")":
+                        postFix+=oper
+                    else:
+                        start+=1
+            else:
+                postFix+=infix[start]
+                start+=1
+    while stack.isEmpty()==False:
+        oper=stack.pop()
+        postFix+=oper
+    return postFix
+print(postFix(infix))
