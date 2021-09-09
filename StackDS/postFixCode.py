@@ -51,6 +51,7 @@ class postFix(object):
         lengthOfInfix=len(infix)-1
         while start<=lengthOfInfix:
             if infix[start]=="(":
+                print(True)
                 index=self.braces(start,infix,lengthOfInfix)
 
                 #This is i use before the method Creation
