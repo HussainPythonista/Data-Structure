@@ -1,7 +1,10 @@
+#I just impot already created Stack DataStructure
 from stack import *
 class postFix(object):
     def __init__(self):
-        #PostFixAnswer =abc*+de/+
+        
+        #Check the preference
+        #Which is use for Which one Have Higher priority and which one have low
         self.preference={
             "*":2,
             "/":2,
@@ -11,8 +14,12 @@ class postFix(object):
             "(":0,
             ")":0}
         #The peference is we use for to append and delete the value in stack which one have high priority
+        #Just set Imported one into the Variable
         self.stack=Stack()
+        #For check the opertor 
         self.operators=["*","/","+","-","^"] 
+        
+        #For answere
         self.postFix=""
         
     def braces(self,index,valuesInBraces,lengthOfInfix):
