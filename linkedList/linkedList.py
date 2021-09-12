@@ -121,5 +121,5 @@ class linkedList(object):
                 pointer=prev
                 prev=prev.nextReference
             pointer.nextReference=prev
-            
-ll=linkedList()
+if __name__=="__main__":
+    ll=linkedList()
