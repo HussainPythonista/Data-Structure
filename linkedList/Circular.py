@@ -4,16 +4,7 @@ from linkedList import *
 
 circular=linkedList()
 
-circular.addElement2(10)
-circular.addElement2(20)
-circular.addElement2(30)
-circular.addElement2(40)
-circular.addElement2(50)
-circular.addElement2(60)
-circular.addElement2(70)
-circular.addElement2(80)
-circular.addElement2(90)
-circular.addElement2(100)
+
 def createCircularLinkedList(head):
     #Create circular linkedlist
     forRemember=head
@@ -22,7 +13,6 @@ def createCircularLinkedList(head):
     while pointer!=None:
         print(pointer.data)
         if pointer.nextReference==forRemember:
-            
             pointer.nextReference=None
         pointer=pointer.nextReference
 head=circular.head
